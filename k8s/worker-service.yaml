@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker-service
+  template:
+    metadata:
+      labels:
+        app: worker-service
+    spec:
+      containers:
+      - name: worker
+        image: hpnanditha/worker_service:3.4
+        imagePullPolicy: Always
+
+        env:
+        - name: DATABASE_URL
+          value: postgresql://postgres:postgres@postgres:5432/postgres
+        - name: REDIS_HOST
+          value: redis
+        - name: KAFKA_BOOTSTRAP
+          value: kafka-0.kafka:9092
+
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
