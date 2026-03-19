@@ -1,4 +1,4 @@
-print("Worker starting...")
+print("Worker starting... CI/CD VERSION ")
 
 from confluent_kafka import Consumer
 import json
