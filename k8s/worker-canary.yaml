@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-service-canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker-service
+      version: canary
+  template:
+    metadata:
+      labels:
+        app: worker-service
+        version: canary
+    spec:
+      containers:
+        - name: worker
+          image: hpnanditha/worker_service:latest
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "500m"
+          env:
+            - name: DATABASE_URL
+              value: postgresql://postgres:postgres@postgres:5432/postgres
+            - name: REDIS_HOST
+              value: redis
+            - name: KAFKA_BOOTSTRAP
+              value: kafka-0.kafka:9092
