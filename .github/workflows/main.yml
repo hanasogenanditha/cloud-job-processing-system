@@ -9,7 +9,6 @@ jobs:
 build-and-push:
 runs-on: ubuntu-latest
 
-```
 steps:
   - name: Checkout Code
     uses: actions/checkout@v3
@@ -22,4 +21,4 @@ steps:
 
   - name: Push Worker Image
     run: docker push hpnanditha/worker_service:latest
-```
+
