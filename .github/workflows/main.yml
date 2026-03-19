@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI-CD Pipeline
 
 on:
 push:
@@ -8,6 +8,7 @@ branches:
 jobs:
 build-and-push:
 runs-on: ubuntu-latest
+
 
 steps:
   - name: Checkout Code
