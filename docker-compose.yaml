@@ -1,7 +1,7 @@
 services:
 
   postgres:
-    image: postgres:15
+    image: ankane/pgvector:v0.5.1
     container_name: job_postgres
     restart: unless-stopped
     environment:

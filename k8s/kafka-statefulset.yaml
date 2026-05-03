@@ -46,3 +46,4 @@ spec:
           value: PLAINTEXT
         - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
           value: "1"
+        

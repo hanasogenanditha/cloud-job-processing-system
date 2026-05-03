@@ -14,17 +14,20 @@ spec:
     spec:
       containers:
       - name: worker
-        image: hpnanditha/worker_service:3.4
-        imagePullPolicy: Always
-
+        image: hpnanditha/worker_service:v44
+        imagePullPolicy: IfNotPresent
         env:
         - name: DATABASE_URL
           value: postgresql://postgres:postgres@postgres:5432/postgres
         - name: REDIS_HOST
           value: redis
         - name: KAFKA_BOOTSTRAP
-          value: kafka-0.kafka:9092
-
+          value: kafka-0.kafka.default.svc.cluster.local:9092
+        - name: GEMINI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: gemini-secret
+              key: GEMINI_API_KEY
         resources:
           requests:
             cpu: "100m"
@@ -32,3 +35,10 @@ spec:
           limits:
             cpu: "500m"
             memory: "256Mi"
+        volumeMounts:
+        - name: pdf-storage
+          mountPath: /app/pdfs
+      volumes:
+      - name: pdf-storage
+        persistentVolumeClaim:
+          claimName: worker-pdf-pvc

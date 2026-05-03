@@ -6,3 +6,4 @@ pydantic
 confluent-kafka
 redis
 prometheus-client
+python-multipart
