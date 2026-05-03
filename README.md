@@ -112,7 +112,7 @@ job-platform/
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [Docker](https://www.docker.com/)
-- A [Gemini API key](https://aistudio.google.com/app/apikey)
+- [A Gemini API key](https://aistudio.google.com/app/apikey)
 
 ### 1. Clone the repo
 
